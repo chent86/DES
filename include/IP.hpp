@@ -13,7 +13,7 @@ using namespace std;
 M 0 的前32位和后32位。下表给出 IP 置换后的下标编号序列。
 */
 
-string IP(string text);  // 返回０１串
+string IP(string text);  // 输入为原始８字节字符串，　输出为ＩＰ置换后的０１串
 
 // 逆置换
 string invert_IP(string text);  // 返回０１串
