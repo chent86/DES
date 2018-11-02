@@ -58,6 +58,6 @@ string S_box(string text, int i) {
     string m = text.substr(1,4);
     int row = bitset<2>(n).to_ulong();
     int column = bitset<4>(m).to_ulong();
-    bitset<4> result = BOX[i][row-1][column-1];
+    bitset<4> result = BOX[i][row][column];
     return result.to_string();
 }

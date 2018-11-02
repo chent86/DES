@@ -27,8 +27,12 @@ string IP(string text) {
     return handler(text, IP_table);
 }
 
-string invert_IP(string text) {
-    return handler(text, invert_IP_table);
+string invert_IP(string binary) {
+    string result(64, ' ');
+    for(int i = 0; i < 64; i++) {
+        result[i] = binary[invert_IP_table[i]-1];  //　根据置换表置换０,1
+    }
+    return result;
 }
 
 string handler(string text, int* current_table) {
