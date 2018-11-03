@@ -24,18 +24,6 @@ int invert_IP_table[64] = {
 };
 
 string IP(string text) {
-    return handler(text, IP_table);
-}
-
-string invert_IP(string binary) {
-    string result(64, ' ');
-    for(int i = 0; i < 64; i++) {
-        result[i] = binary[invert_IP_table[i]-1];  //　根据置换表置换０,1
-    }
-    return result;
-}
-
-string handler(string text, int* current_table) {
     string origin = "";
     string result(64, ' ');
     for(int i = 0; i < 8; i++) {
@@ -44,15 +32,16 @@ string handler(string text, int* current_table) {
     }
 
     for(int i = 0; i < 64; i++) {
-        result[i] = origin[current_table[i]-1];  //　根据置换表置换０,1
+        result[i] = origin[IP_table[i]-1];  //　根据置换表置换０,1
     }
 
-    // string tmp = "";
-    // for(int i = 0; i < 8; i++) {
-    //     bitset<8> t(result.substr(i*8,8));  // 将二进制字符串恢复为实际字符串
-    //     tmp += t.to_ulong();
-    // }
-    // text = tmp;
+    return result;
+}
 
+string invert_IP(string binary) {
+    string result(64, ' ');
+    for(int i = 0; i < 64; i++) {
+        result[i] = binary[invert_IP_table[i]-1];  //　根据置换表置换０,1
+    }
     return result;
 }

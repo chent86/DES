@@ -6,7 +6,7 @@ BUILD_DIR := build
 BIN_DIR := bin
 INCLUDE := -I./$(INC_DIR)
 
-$(BIN_DIR)/main: $(BUILD_DIR)/E-expand.o $(BUILD_DIR)/Feistel.o $(BUILD_DIR)/fill.o $(BUILD_DIR)/IP.o $(BUILD_DIR)/key.o $(BUILD_DIR)/P-displace.o $(BUILD_DIR)/S-box.o $(BUILD_DIR)/main.o
+$(BIN_DIR)/main: $(BUILD_DIR)/E-expand.o $(BUILD_DIR)/Feistel.o $(BUILD_DIR)/fill.o $(BUILD_DIR)/IP.o $(BUILD_DIR)/key.o $(BUILD_DIR)/P-displace.o $(BUILD_DIR)/S-box.o $(BUILD_DIR)/T-iteration.o $(BUILD_DIR)/main.o
 	@mkdir -p $(BIN_DIR)
 	@$(CC) $(FLAGS) $(INCLUDE) $^ -o $@
 

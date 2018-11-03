@@ -25,28 +25,38 @@ int PC_2[48] = {
     46, 42, 50, 36, 29, 32 
 };
 
+std::shared_ptr<key> key::m_instance = nullptr;
+
 key::key() {
     set_all_key();
+}
+
+shared_ptr<key> key::getInstance() {
+    if(m_instance == nullptr) {
+        std::shared_ptr<key>  instance(new key);
+        m_instance = instance;
+    } 
+    return m_instance;
 }
 
 void key::set_all_key() {
     string CD0(56, ' ');
     for(int i = 0; i < 56; i++)
-        CD0[i] = m_key[PC_1[i]-1];  //原秘钥经过PC-1置换得到C0D0
+        CD0[i] = m_key[PC_1[i]-1];            //原秘钥经过PC-1置换得到C0D0
     string C = CD0.substr(0,28);
     string D = CD0.substr(28);
     string K(48, ' ');
     for(int i = 1; i <= 16; i++) {
         if(i == 1 || i == 2 || i == 9 || i == 16) {
-            C = C.substr(1)+C.substr(0,1);
+            C = C.substr(1)+C.substr(0,1);    // C D 循环左移一个位置
             D = D.substr(1)+D.substr(0,1);
         } else {
-            C = C.substr(2)+C.substr(0,2);
+            C = C.substr(2)+C.substr(0,2);    // C D 循环左移两个位置
             D = D.substr(2)+D.substr(0,2);            
         }
         string tmp = C+D;
         for(int j = 0; j < 48; j++) {
-            K[j] = tmp[PC_2[j]-1];
+            K[j] = tmp[PC_2[j]-1];            // 对CD实行PC-2压缩置换
         }
         sub_key[i-1] = K;
     }

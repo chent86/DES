@@ -8,6 +8,6 @@ void fill(string& PlainText) {
     } else {
         int n = 8 - PlainText.length()%8;
         while(n--)
-            PlainText += 8;   //　只说了填入相同字节
+            PlainText += 8;   //　填入相同字节
     }
 }
