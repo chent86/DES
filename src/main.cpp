@@ -7,7 +7,7 @@
 using namespace std;
 
 string DES(string text, string type) {
-
+    
     int num = text.length()/8;
     string L, R, result, outcome;
 
